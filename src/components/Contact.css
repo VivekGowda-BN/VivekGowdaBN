@@ -1,0 +1,490 @@
+/* ══════════════════════════════════════════════════════════════════
+   CONTACT SECTION — “OPEN THE DOOR”
+   Exact Pamidor Design Architecture & Visual Language
+   Sky / Clouds Video Background + Floating Dark Night Card
+   Typography: 100% Montserrat
+   ══════════════════════════════════════════════════════════════════ */
+
+.contact {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(48px, 8vh, 96px) 24px;
+  background-color: rgb(13, 13, 11);
+  font-family: var(--font-pamidor) !important;
+}
+
+.contact * {
+  font-family: var(--font-pamidor) !important;
+}
+
+/* ── 1. Full-Screen Background Video (Sky / Clouds) ── */
+.contact__bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact__video-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(13, 13, 11, 0.1) 0%,
+    rgba(13, 13, 11, 0.35) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Container ── */
+.contact__container {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width, 1280px);
+  margin: 0 auto;
+  padding: 0 var(--margin, 40px);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── 2. Dark Floating Contact Box (Pamidor Night) ── */
+.contact__card {
+  position: relative;
+  width: 100%;
+  max-width: 740px;
+  background-color: rgb(13, 13, 11);
+  color: #FFFFFF;
+  padding: clamp(32px, 4.5vw, 48px) clamp(24px, 4.5vw, 52px);
+  border-radius: 4px;
+  box-shadow: 0 18px 40px -12px rgba(10, 10, 10, 0.28),
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Label: (LEAVE YOUR DETAILS) ── */
+.contact__label-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.contact__small-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(158, 153, 145);
+}
+
+/* ── Big Heading: OPEN THE DOOR ── */
+.contact__heading {
+  font-size: clamp(2.4rem, 5.2vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #EFEEEB;
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+}
+
+.contact__door-nowrap {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Pamidor Signature Kinetic Door Animation */
+[data-door] .door-o {
+  display: inline-block;
+  transform-origin: 0% 50%;
+  animation: door-shut 5s infinite;
+}
+
+[data-door] .door-r {
+  display: inline-block;
+  animation: door-slide 5s infinite;
+}
+
+@keyframes door-shut {
+  0% {
+    animation-timing-function: cubic-bezier(0.55, 0, 0.25, 1);
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  7% {
+    opacity: 1;
+  }
+  8% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  28% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.55, 0, 0.25, 1);
+    transform: scaleX(0);
+  }
+  29% {
+    opacity: 1;
+  }
+  36% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes door-slide {
+  0% {
+    animation-timing-function: cubic-bezier(0.55, 0, 0.25, 1);
+    transform: translateX(0);
+  }
+  8% {
+    transform: translateX(-0.65em);
+  }
+  28% {
+    transform: translateX(-0.65em);
+    animation-timing-function: cubic-bezier(0.55, 0, 0.25, 1);
+  }
+  36% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ── Subtext Row ── */
+.contact__subtext-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+  font-size: clamp(0.95rem, 1.15vw, 1.125rem);
+}
+
+.contact__subtext-label {
+  color: rgb(158, 153, 145);
+  font-weight: 400;
+}
+
+.contact__email-link {
+  color: #EFEEEB;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 2px;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.contact__email-link:hover {
+  border-bottom-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+/* ── Form Layout ── */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact__form-grid {
+  display: grid;
+  gap: 20px 32px;
+}
+
+.contact__form-grid--2col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.contact__form-grid--split {
+  grid-template-columns: 2fr 3fr;
+}
+
+.contact__form-grid--full {
+  grid-template-columns: 1fr;
+}
+
+/* ── Form Fields ── */
+.contact__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__field-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(158, 153, 145);
+  margin-bottom: 6px;
+}
+
+.contact__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  padding: 8px 0 12px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #FFFFFF;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact__input:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.85);
+}
+
+.contact__input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 400;
+}
+
+/* Dropdown Select */
+.contact__select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.contact__select {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  padding: 8px 24px 12px 0;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #FFFFFF;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact__select:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.85);
+}
+
+.contact__select option {
+  background-color: rgb(13, 13, 11);
+  color: #FFFFFF;
+  padding: 12px;
+}
+
+.contact__select-arrow {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── Submit Row (White Button + Helper Text) ── */
+.contact__submit-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 14px;
+  flex-wrap: wrap;
+}
+
+.contact__submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 22px;
+  background-color: #FFFFFF;
+  color: rgb(13, 13, 11);
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.3s ease;
+}
+
+.contact__submit-btn:hover {
+  background-color: transparent;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.contact__submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contact__submit-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.contact__submit-btn:hover .contact__submit-icon {
+  transform: rotate(-45deg);
+}
+
+.contact__helper-note {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgb(158, 153, 145);
+  margin: 0;
+}
+
+/* ── Small Privacy / Helper text below button ── */
+.contact__privacy-row {
+  padding-top: 4px;
+}
+
+.contact__privacy-note {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgb(158, 153, 145);
+  margin: 0;
+}
+
+.contact__privacy-link {
+  color: #EFEEEB;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.contact__privacy-link:hover {
+  color: #FFFFFF;
+}
+
+/* ── Success State ── */
+.contact__success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 0 12px;
+}
+
+.contact__success-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #3B82F6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+.contact__success-check {
+  font-weight: 800;
+}
+
+.contact__success-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.contact__success-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgb(158, 153, 145);
+  margin: 0;
+  max-width: 580px;
+}
+
+.contact__success-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.contact__reset-btn {
+  padding: 10px 20px;
+  background-color: #FFFFFF;
+  color: rgb(13, 13, 11);
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.contact__reset-btn:hover {
+  background-color: transparent;
+  color: #FFFFFF;
+}
+
+.contact__direct-mailto {
+  color: #3B82F6;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .contact {
+    padding: 60px 16px;
+  }
+
+  .contact__container {
+    padding: 0;
+  }
+
+  .contact__card {
+    padding: 28px 20px;
+  }
+
+  .contact__form-grid--2col,
+  .contact__form-grid--split {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .contact__submit-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .contact__submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

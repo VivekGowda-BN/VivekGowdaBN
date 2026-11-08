@@ -1,0 +1,178 @@
+/* ══════════════════════════════════════════════════════════════════
+   EXACT ALEJANDRO HA TRANSITION & BLUE PAINT BRUSH ANIMATION
+   Extracted directly from https://alejandroha.com/en
+   Color: #2A4093 (rgb(42, 64, 147))
+   ══════════════════════════════════════════════════════════════════ */
+
+.scroll-draw-transition {
+  position: relative;
+  width: 100%;
+  min-height: 220vh;
+  background-color: var(--light-silver, #efeeeb);
+  z-index: 2;
+}
+
+/* ── Native CSS Sticky Viewport Container (100% Lenis-compatible) ── */
+.scroll-draw-transition__sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--light-silver, #efeeeb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Centered Editorial Header (Fully visible on scroll down) ── */
+.services-header__w {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── "SMALL DETAILS. BIG IMPACT." ── */
+.services-big-txt {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--font-pamidor);
+  font-size: clamp(2.8rem, 6.5vw, 6.25rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: #1a1a1a;
+  margin: 0 0 0.4em 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+.services-big-txt__line {
+  display: block;
+}
+
+.services-big-txt__span {
+  font-size: 1.85em;
+  display: block;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-top: 0.12em;
+}
+
+/* ── "[ Selected Work ]" ── */
+.heading-h2 {
+  font-family: var(--font-pamidor) !important;
+  font-size: clamp(1.6rem, 3.8vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.25em;
+  opacity: 1;
+  visibility: visible;
+}
+
+.txt-color-blue {
+  color: #2a4093;
+}
+
+.heading-title-text {
+  display: inline-block;
+  color: #2a4093;
+}
+
+.heading-bracket {
+  display: inline-block;
+  color: #2a4093;
+  will-change: transform;
+}
+
+.heading-bracket.is--left {
+  margin-right: 0.28em;
+}
+
+.heading-bracket.is--right {
+  margin-left: 0.28em;
+}
+
+/* ── Overlay for the sweeping Paint / Brush Stroke ── */
+.scroll-draw-transition__overlay {
+  z-index: 2;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.scroll-draw-transition__shape {
+  width: 100%;
+  height: 100%;
+  color: #2a4093;
+  position: absolute;
+  inset: 0;
+}
+
+/* 130% dimensions with -15% bleed guarantee zero corner clipping */
+.transition__svg {
+  width: 130%;
+  height: 130%;
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  will-change: transform;
+  overflow: visible;
+}
+
+.transition__svg path {
+  will-change: stroke-dashoffset, stroke-width;
+  filter: drop-shadow(0 14px 28px rgba(42, 64, 147, 0.35));
+}
+
+/* ── Responsive adjustments ── */
+@media (max-width: 991px) {
+  .services-header__w {
+    padding: 1.5em;
+  }
+
+  .services-big-txt {
+    font-size: clamp(2.4rem, 8vw, 4.2rem);
+  }
+
+  .heading-h2 {
+    font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .services-header__w {
+    padding: 1em;
+  }
+
+  .services-big-txt {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .services-big-txt__span {
+    font-size: 1.6em;
+  }
+
+  .heading-h2 {
+    font-size: clamp(1.2rem, 5.5vw, 1.85rem);
+  }
+}

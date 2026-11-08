@@ -1,0 +1,505 @@
+/* ══════════════════════════════════════════════════════════════════
+   TILTED CARD (React Bits 3D Interactive Flip Card)
+   Compact & Balanced Dimensions
+   ══════════════════════════════════════════════════════════════════ */
+
+.tilted-card-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.tilted-card-root:focus-visible .tilted-card {
+  box-shadow: 0 0 0 3px rgba(42, 64, 147, 0.4), 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ── 3D Card Shell (Reduced from 520px to 430px for better balance) ── */
+.tilted-card {
+  position: relative;
+  width: 100%;
+  height: 430px;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ── Flipper (Handles 0deg <-> 180deg flip) ── */
+.tilted-card__flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+}
+
+/* ── Faces Common ── */
+.tilted-card__face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  box-shadow:
+    0 8px 24px -8px rgba(10, 10, 10, 0.12),
+    0 18px 48px -12px rgba(42, 64, 147, 0.14);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tilted-card:hover .tilted-card__face {
+  box-shadow:
+    0 16px 36px -8px rgba(10, 10, 10, 0.18),
+    0 24px 60px -10px rgba(42, 64, 147, 0.22);
+  border-color: rgba(42, 64, 147, 0.35);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FRONT FACE
+   ───────────────────────────────────────────────────────────── */
+.tilted-card__face--front {
+  transform: rotateY(0deg) translateZ(1px);
+  background-color: #0A0D18;
+}
+
+/* Background image & gradient */
+.tilted-card__bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.tilted-card__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.03);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  filter: brightness(0.85) contrast(1.05);
+}
+
+.tilted-card:hover .tilted-card__bg-img {
+  transform: scale(1.07);
+  filter: brightness(0.92) contrast(1.1);
+}
+
+/* Vignette overlay for text readability */
+.tilted-card__gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 9, 18, 0.78) 0%,
+    rgba(8, 9, 18, 0.22) 32%,
+    rgba(8, 9, 18, 0.72) 65%,
+    rgba(8, 9, 18, 0.98) 100%
+  );
+  z-index: 2;
+}
+
+/* Content Container */
+.tilted-card__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateZ(20px); /* 3D depth layer */
+}
+
+/* Top Row */
+.tilted-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Card Number Badge (1 / 2) */
+.tilted-card__number-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  color: #FFFFFF;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.tilted-card:hover .tilted-card__number-badge {
+  transform: scale(1.08);
+  background: #2A4093;
+  border-color: #FFFFFF;
+}
+
+.tilted-card__number-text {
+  font-family: var(--font-pamidor);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Top Meta Pills */
+.tilted-card__meta-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tilted-card__pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.tilted-card__pill--period {
+  background: rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tilted-card__pill--location {
+  background: rgba(42, 64, 147, 0.55);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Bottom Identity Area */
+.tilted-card__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.tilted-card__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tilted-card__role {
+  font-family: var(--font-pamidor);
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.tilted-card__company-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tilted-card__at {
+  opacity: 0.65;
+  font-weight: 400;
+}
+
+.tilted-card__company {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+/* Highlight Banner */
+.tilted-card__highlight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 3px solid #2A4093;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.tilted-card__highlight-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #2A4093;
+  box-shadow: 0 0 6px #2A4093;
+  flex-shrink: 0;
+}
+
+.tilted-card__highlight-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.3;
+}
+
+/* Footer / Flip Button */
+.tilted-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 2px;
+}
+
+.tilted-card__flip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: rgba(42, 64, 147, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.tilted-card:hover .tilted-card__flip-btn {
+  background: #2A4093;
+  transform: translateY(-1px);
+}
+
+.tilted-card__flip-icon {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.4s ease;
+}
+
+.tilted-card:hover .tilted-card__flip-icon {
+  transform: rotate(180deg);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BACK FACE
+   ───────────────────────────────────────────────────────────── */
+.tilted-card__face--back {
+  transform: rotateY(180deg) translateZ(1px);
+  background-color: #0E1018;
+  color: #FFFFFF;
+}
+
+.tilted-card__back-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(42, 64, 147, 0.32) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(42, 64, 147, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #12141F 0%, #0A0C14 100%);
+  z-index: 1;
+}
+
+.tilted-card__content--back {
+  padding: 22px 22px 18px;
+  gap: 12px;
+}
+
+.tilted-card__number-badge--back {
+  background: #2A4093;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.tilted-card__top-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tilted-card__ext-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.tilted-card__ext-link:hover {
+  background: #2A4093;
+  border-color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.tilted-card__flip-back-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.tilted-card__flip-back-pill:hover {
+  transform: rotate(-180deg);
+  background: #2A4093;
+}
+
+.tilted-card__back-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 8px;
+}
+
+.tilted-card__back-role {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.tilted-card__back-period {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Back Description */
+.tilted-card__back-desc {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+}
+
+/* Back Contributions */
+.tilted-card__contrib-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tilted-card__contrib-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.tilted-card__contrib-star {
+  color: #3B82F6;
+  font-size: 0.68rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.tilted-card__highlight--back {
+  background: rgba(42, 64, 147, 0.25);
+  border-color: rgba(42, 64, 147, 0.5);
+  border-left-color: #3B82F6;
+  padding: 7px 10px;
+}
+
+.tilted-card__footer--back {
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 8px;
+  margin-top: auto;
+}
+
+.tilted-card__flip-back-prompt {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.03em;
+  transition: color 0.2s ease;
+}
+
+.tilted-card:hover .tilted-card__flip-back-prompt {
+  color: #FFFFFF;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   DYNAMIC GLARE (Cursor tracking radial highlight)
+   ───────────────────────────────────────────────────────────── */
+.tilted-card__glare {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 10;
+  will-change: opacity, background;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .tilted-card {
+    height: 410px;
+  }
+
+  .tilted-card__content {
+    padding: 18px 18px 16px;
+  }
+
+  .tilted-card__content--back {
+    padding: 18px 18px 16px;
+    gap: 10px;
+  }
+
+  .tilted-card__role {
+    font-size: 1.35rem;
+  }
+
+  .tilted-card__back-desc {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+}

@@ -1,0 +1,85 @@
+# ─────────────────────────────────────────────────────────────
+# ENVIRONMENT VARIABLES & SECRETS
+# ─────────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+
+# ─────────────────────────────────────────────────────────────
+# PRIVATE CONTENT & PROPRIETARY DESIGN EXTRACTIONS
+# ─────────────────────────────────────────────────────────────
+# Personal & raw content files
+[cC][oO][nN][tT][eE][nN][tT].[mM][dD]
+content.md
+CONTENT.md
+Content.md
+
+# WebScraper, notes & text files
+*.txt
+*.scrape
+*.scraper
+*.extracted
+
+# Specific design extraction & reverse-engineered references
+*ALEJANDRO*
+*Alejandro*
+*alejandro*
+*PAMIDOR*
+*Pamidor*
+*pamidor*
+*.webscrap*
+*.snatch*
+
+# ─────────────────────────────────────────────────────────────
+# LOGS & RUNTIME
+# ─────────────────────────────────────────────────────────────
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ─────────────────────────────────────────────────────────────
+# DEPENDENCIES & BUILD ARTIFACTS
+# ─────────────────────────────────────────────────────────────
+node_modules/
+dist/
+dist-ssr/
+build/
+.cache/
+.parcel-cache/
+.turbo/
+*.local
+
+# ─────────────────────────────────────────────────────────────
+# EDITOR & OS METADATA
+# ─────────────────────────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.tmp
+*.bak
+Thumbs.db
+Desktop.ini

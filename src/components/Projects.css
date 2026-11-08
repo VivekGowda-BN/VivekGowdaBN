@@ -1,0 +1,471 @@
+/* ══════════════════════════════════════════════════════════════════
+   SELECTED WORK / PROJECTS — Compact Pamidor Style
+   Sits cleanly on solid Alejandro Blue (#2A4093)
+   ══════════════════════════════════════════════════════════════════ */
+
+.pamidor-projects,
+.pamidor-projects * {
+  font-family: var(--font-pamidor) !important;
+  box-sizing: border-box;
+}
+
+.pamidor-projects {
+  position: relative;
+  width: 100%;
+  background-color: #2A4093;
+  color: #FFFFFF;
+  padding: 100px 0 120px;
+  overflow: visible;
+  z-index: 3;
+}
+
+.pamidor-projects__container {
+  max-width: var(--max-width, 1280px);
+  margin: 0 auto;
+  padding: 0 var(--margin, 64px);
+}
+
+/* ── Section Header ── */
+.pamidor-projects__header {
+  margin-bottom: 32px;
+}
+
+.pamidor-projects__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.pamidor-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.pamidor-tag__bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  display: inline-block;
+  box-shadow: 0 0 6px #FFFFFF;
+}
+
+.pamidor-projects__title-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.pamidor-projects__title {
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.pamidor-projects__lead {
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 650px;
+  margin: 0;
+}
+
+/* Hairline Divider Rule */
+.pamidor-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PAMIDOR PROJECTS LIST — Compact rows
+   ───────────────────────────────────────────────────────────── */
+.pamidor-showcase {
+  width: 100%;
+}
+
+.pamidor-showcase__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Project Row ── */
+.pamidor-project-item {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 8px;
+}
+
+.pamidor-project-item.is--collapsed {
+  opacity: 0.85;
+}
+
+.pamidor-project-item.is--collapsed:hover,
+.pamidor-project-item.is--expanded {
+  opacity: 1;
+}
+
+/* Hover background turns crisp white & project name turns black (Pamidor Design signature) */
+.pamidor-project-item:hover,
+.pamidor-project-item.is--expanded {
+  background-color: #FFFFFF;
+  margin: 0 -16px;
+  padding: 0 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Item Header Row */
+.pamidor-project-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0 16px;
+}
+
+.pamidor-project-item__title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pamidor-project-item__number {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.01em;
+  min-width: 28px;
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pamidor-project-item:hover .pamidor-project-item__number,
+.pamidor-project-item.is--expanded .pamidor-project-item__number {
+  color: #2A4093;
+}
+
+/* Project Name: White by default, turns black (#0D1033) on hover */
+.pamidor-project-item__name {
+  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 0;
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pamidor-project-item:hover .pamidor-project-item__name,
+.pamidor-project-item.is--expanded .pamidor-project-item__name {
+  color: #0D1033;
+}
+
+.pamidor-project-item__subtitle-tag {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pamidor-project-item:hover .pamidor-project-item__subtitle-tag,
+.pamidor-project-item.is--expanded .pamidor-project-item__subtitle-tag {
+  color: rgba(13, 16, 51, 0.6);
+}
+
+/* "Jump To Project" Button */
+.pamidor-jump-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+
+.pamidor-project-item:hover .pamidor-jump-btn,
+.pamidor-project-item.is--expanded .pamidor-jump-btn {
+  background-color: #2A4093;
+  color: #FFFFFF;
+  border-color: #2A4093;
+}
+
+.pamidor-jump-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.pamidor-jump-btn__icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.pamidor-jump-btn:hover .pamidor-jump-btn__icon {
+  transform: rotate(-45deg);
+}
+
+/* ── Expandable Body Panel (Ultra-smooth Pamidor Dropdown) ── */
+.pamidor-project-item__body {
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pamidor-project-item.is--collapsed .pamidor-project-item__body {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.pamidor-project-item.is--expanded .pamidor-project-item__body {
+  max-height: 255px;
+  opacity: 1;
+  padding: 10px 0 22px;
+  pointer-events: auto;
+}
+
+/* 2-Column Flex: Left text/chips/live, Right compact screenshot */
+.pamidor-project-item__grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease;
+}
+
+.pamidor-project-item.is--collapsed .pamidor-project-item__grid {
+  transform: translateY(6px);
+  opacity: 0;
+}
+
+.pamidor-project-item.is--expanded .pamidor-project-item__grid {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Left Info Column */
+.pamidor-project-item__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 1 short line description */
+.pamidor-project-item__desc {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: rgba(13, 16, 51, 0.85);
+  margin: 0;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tech Stack Icons + Name Tags */
+.pamidor-stack-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pamidor-stack-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background-color: rgba(42, 64, 147, 0.08);
+  color: #2A4093;
+  border: 1px solid rgba(42, 64, 147, 0.18);
+  white-space: nowrap;
+}
+
+.pamidor-stack-chip svg {
+  display: block;
+  flex-shrink: 0;
+  color: #2A4093;
+}
+
+/* Action: “Live” button */
+.pamidor-action-wrap {
+  margin-top: 2px;
+}
+
+.pamidor-live-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background-color: #2A4093;
+  border: 1px solid #2A4093;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background-color 0.2s ease,
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
+  width: fit-content;
+}
+
+.pamidor-live-btn:hover {
+  background-color: #1A2E78;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(42, 64, 147, 0.35);
+}
+
+/* Right Media Visual Window (Clean & Balanced) */
+.pamidor-project-item__visual {
+  width: 240px;
+  max-width: 240px;
+  flex-shrink: 0;
+}
+
+.pamidor-cover-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(13, 16, 51, 0.15);
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+}
+
+.pamidor-cover-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.pamidor-cover-card:hover .pamidor-cover-card__img {
+  transform: scale(1.04);
+}
+
+/* Hairline Item Divider */
+.pamidor-item-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.pamidor-project-item:hover + .pamidor-project-item .pamidor-item-divider,
+.pamidor-project-item.is--expanded + .pamidor-project-item .pamidor-item-divider {
+  opacity: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .pamidor-projects__container {
+    padding: 0 var(--margin-mobile, 24px);
+  }
+
+  .pamidor-project-item__grid {
+    gap: 20px;
+  }
+
+  .pamidor-project-item__visual {
+    width: 190px;
+    max-width: 190px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pamidor-projects {
+    padding: 72px 0 96px;
+  }
+
+  .pamidor-project-item__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pamidor-jump-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pamidor-project-item:hover,
+  .pamidor-project-item.is--expanded {
+    margin: 0 -12px;
+    padding: 0 12px;
+  }
+
+  .pamidor-project-item.is--expanded .pamidor-project-item__body {
+    max-height: 380px;
+  }
+
+  .pamidor-project-item__grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .pamidor-project-item__desc {
+    -webkit-line-clamp: 2;
+  }
+
+  .pamidor-project-item__visual {
+    width: 100%;
+    max-width: 240px;
+  }
+}

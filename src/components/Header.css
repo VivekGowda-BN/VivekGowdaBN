@@ -1,0 +1,368 @@
+/* ═══════════════════════════════════════════════
+   THIN MINIMAL HEADER & ALEJANDRO HA BUTTON-007
+   ═══════════════════════════════════════════════ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  z-index: 100;
+  pointer-events: none;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scrolled State: Thin Frosted Glass Navbar appearing only after Hero */
+.header--scrolled {
+  background-color: rgba(226, 225, 225, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(8, 9, 18, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Theme Adaptations */
+.header--blue.header--scrolled {
+  background-color: rgba(42, 64, 147, 0.92);
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.header--dark.header--scrolled {
+  background-color: rgba(13, 13, 11, 0.92);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Inner Layout - Full width edge-to-edge (Alejandro HA style) */
+.header__inner {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  padding: 0 clamp(18px, 2vw, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* ── Transforming Sticky Name SVG ───────────── */
+.header-sticky-name {
+  position: fixed;
+  top: 18px;
+  left: clamp(18px, 2vw, 28px);
+  z-index: 101;
+  display: inline-flex;
+  align-items: center;
+  width: 220px;
+  height: 15px;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  color: #080912;
+  /* NOTE: will-change is intentionally omitted — it creates a GPU compositing
+     layer that blurs the SVG at non-integer pixel scales when GSAP scrubs back
+     to its resting state. GSAP manages its own promotion via backface-visibility.
+     The SVG stays razor-sharp this way. */
+  transition: color 0.3s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Force integer pixel snapping once animation settles at scale:1 */
+  transform: translateZ(0);
+}
+
+.hero-name-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* Keep SVG always crisp — disable subpixel anti-aliasing blur from GPU compositing */
+  image-rendering: auto;
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+}
+
+/* Color adapt in blue/dark sections */
+.header--blue .header-sticky-name,
+.header--dark .header-sticky-name {
+  color: #FFFFFF;
+}
+
+/* ── Top Right Buttons (button-007 style) ─────── */
+.header__nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+  margin-left: auto;
+}
+
+/* Alejandro HA button-007 exact replica */
+.button-007 {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  height: 34px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.75rem; /* ~12px */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  border: 1px solid transparent;
+  color: #FFFFFF !important;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              scale 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+  will-change: transform, scale;
+}
+
+/* Subtle scale on active click */
+.button-007:active {
+  transform: scale(0.95);
+}
+
+.button-007__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.button-007__text {
+  grid-area: 1 / 1;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: #FFFFFF !important;
+}
+
+.button-007__text.is--default {
+  z-index: 2;
+  color: #FFFFFF !important;
+}
+
+.button-007__text.is--hover {
+  z-index: 3;
+  color: #FFFFFF !important;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.button-007__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.button-007__svg-object {
+  width: 100%;
+  height: 100%;
+}
+
+.button-007__svg-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-007__svg-text-wrap {
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-007__svg-text {
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #FFFFFF !important;
+}
+
+/* Paint stroke overlay layer */
+.button-007__svg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.button-007__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Paint Sweep Wave on Hover */
+.button-007__paint-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+  pointer-events: none;
+  transform: translateX(-102%) skewX(-10deg);
+  transform-origin: left center;
+  transition: transform 0.42s cubic-bezier(0.78, 0.18, 0.18, 1);
+  will-change: transform;
+}
+
+.button-007:hover .button-007__paint-sweep {
+  transform: translateX(0) skewX(0deg);
+}
+
+/* Dark Version (GitHub) */
+.button-007--dark {
+  background-color: #080912;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 2px 10px rgba(8, 9, 18, 0.2);
+}
+
+.button-007--dark .button-007__paint-sweep {
+  background-color: #2A4093; /* Alejandro signature blue paint sweep */
+}
+
+.button-007--dark .button-007__svg-overlay,
+.button-007--dark .button-007__svg {
+  color: #2A4093; /* Alejandro blue paint stroke */
+}
+
+.button-007--dark:hover {
+  box-shadow: 0 4px 18px rgba(42, 64, 147, 0.35);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Blue Version (Resume: #2A4093) */
+.button-007--blue {
+  background-color: #2A4093;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(42, 64, 147, 0.25);
+}
+
+.button-007--blue .button-007__paint-sweep {
+  background-color: #080912; /* Dark night paint sweep */
+}
+
+.button-007--blue .button-007__svg-overlay,
+.button-007--blue .button-007__svg {
+  color: #080912; /* Dark night paint stroke */
+}
+
+.button-007--blue:hover {
+  box-shadow: 0 4px 18px rgba(8, 9, 18, 0.35);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Adaptations when in blue section */
+.header--blue .button-007--dark {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.header--blue .button-007--blue {
+  background-color: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Adaptations when in dark section */
+.header--dark .button-007--dark {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.header--dark .button-007--blue {
+  background-color: var(--primary-blue);
+  color: #FFFFFF !important;
+}
+
+/* Enforce pure white text and Montserrat at all times */
+.button-007,
+.button-007 .button-007__text,
+.button-007 .button-007__svg-text,
+.button-007:hover .button-007__text,
+.button-007:hover .button-007__svg-text,
+.header--blue .button-007 .button-007__text,
+.header--dark .button-007 .button-007__text {
+  font-family: 'Montserrat', sans-serif !important;
+  color: #FFFFFF !important;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 991px) {
+  .header {
+    height: 48px;
+  }
+  .header__inner {
+    padding: 0 16px;
+  }
+  .header-sticky-name {
+    top: 16px;
+    left: 16px;
+    width: 180px;
+    height: 12.2px;
+  }
+}
+
+@media (max-width: 640px) {
+  .button-007 {
+    height: 30px;
+  }
+  .button-007__text {
+    padding: 0 13px;
+    font-size: 0.6875rem;
+  }
+  .button-007__svg-text-wrap {
+    padding: 0 13px;
+  }
+  .button-007__svg-text {
+    font-size: 0.6875rem;
+  }
+  .header-sticky-name {
+    width: 160px;
+    height: 10.9px;
+  }
+}

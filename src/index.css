@@ -1,0 +1,480 @@
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM — Vivek Gowda BN Portfolio
+   Hybrid: Alejandro HA × Pamidor Design
+   ═══════════════════════════════════════════════ */
+
+/* ── Google Fonts ───────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap');
+
+/* ── CSS Variables ──────────────────────────── */
+:root {
+  /* Colors */
+  --primary-blue: rgb(42, 64, 147);
+  --primary-blue-20: rgba(42, 64, 147, 0.2);
+  --primary-blue-60: rgba(42, 64, 147, 0.6);
+  --near-black: rgb(8, 9, 18);
+  --light-silver: rgb(226, 225, 225);
+  --ink: rgb(10, 10, 10);
+  --canvas: rgb(239, 238, 235);
+  --night: rgb(13, 13, 11);
+  --white: rgb(255, 255, 255);
+  --white-50: rgba(255, 255, 255, 0.5);
+  --white-35: rgba(255, 255, 255, 0.35);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --muted: rgb(107, 104, 98);
+  --accent: #3B82F6;
+  --accent-10: rgba(59, 130, 246, 0.1);
+  --chip-border: rgba(10, 10, 10, 0.2);
+  --rule: rgba(10, 10, 10, 0.12);
+  --red: rgb(209, 36, 36);
+
+  /* Typography */
+  --font-display: 'Funnel Display', funnelDisplay, 'funnelDisplay Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Funnel Display', funnelDisplay, 'funnelDisplay Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --font-pamidor: 'Funnel Display', funnelDisplay, 'funnelDisplay Fallback', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Sizing unit */
+  --px: 1px;
+
+  /* Easings */
+  --ease-out-soft: cubic-bezier(0.625, 0.05, 0, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Layout */
+  --max-width: 1280px;
+  --margin: 64px;
+  --margin-mobile: 24px;
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --px: calc(1vw / 14.4);
+  }
+}
+
+/* ── Reset ──────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Pamidor Typography Scoped to Requested Sections ── */
+.about__heading,
+.about__paragraph,
+.about__label,
+.about__meta,
+.scroll-draw-transition,
+.services-big-txt,
+.heading-h2,
+.pamidor-projects,
+.pamidor-projects *:not(.button-007):not(.button-007 *),
+.experience,
+.experience *:not(.button-007):not(.button-007 *),
+.accordion-gallery,
+.accordion-gallery *:not(.button-007):not(.button-007 *),
+.contact,
+.contact *:not(.button-007):not(.button-007 *),
+.footer,
+.footer *:not(.button-007):not(.button-007 *) {
+  font-family: var(--font-pamidor);
+}
+
+/* Protected Custom Buttons (Always Preserve Montserrat) */
+.button-007,
+.button-007 *,
+.about__cta-btn,
+.about__cta-btn * {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: auto;
+  /* Lenis handles smooth scroll */
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+  background-color: var(--canvas, #EFEEEB);
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* ── Typography Scale ───────────────────────── */
+.text-display {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.text-project {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.text-lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.2vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.text-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 0.9vw, 0.875rem);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.text-small {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── Layout Utilities ───────────────────────── */
+.section-padding {
+  padding-left: var(--margin);
+  padding-right: var(--margin);
+}
+
+@media (max-width: 991px) {
+  .section-padding {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-padding {
+    padding-left: var(--margin-mobile);
+    padding-right: var(--margin-mobile);
+  }
+}
+
+.max-canvas {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Animations ─────────────────────────────── */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes charReveal {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes doorShut {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes doorSlide {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/* ── Global Component Styles ────────────────── */
+
+/* Progressive Blur (Alejandro) */
+.progressive-blur {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.progressive-blur__layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.progressive-blur__layer.is--1 {
+  height: 100%;
+  backdrop-filter: blur(1px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 12.5%, black 25%, transparent 37.5%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12.5%, black 25%, transparent 37.5%);
+}
+
+.progressive-blur__layer.is--2 {
+  height: 75%;
+  backdrop-filter: blur(2px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 16.67%, black 33.33%, transparent 50%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 16.67%, black 33.33%, transparent 50%);
+}
+
+.progressive-blur__layer.is--3 {
+  height: 50%;
+  backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 50%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 50%, transparent 75%);
+}
+
+.progressive-blur__layer.is--4 {
+  height: 30%;
+  backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 70%, transparent 100%);
+}
+
+.progressive-blur__layer.is--5 {
+  height: 15%;
+  backdrop-filter: blur(14px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+}
+
+/* Chip / Tag */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1.2px solid var(--chip-border);
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 0.85vw, 0.875rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.chip:hover {
+  background-color: var(--ink);
+  color: var(--canvas);
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--near-black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border-radius: 0;
+  transition: transform 0.475s var(--ease-out-soft), background-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--primary-blue);
+  transform: translateY(100%);
+  transition: transform 0.475s var(--ease-out-soft);
+}
+
+.btn-primary:hover::before {
+  transform: translateY(0);
+}
+
+.btn-primary span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--near-black);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: 1.5px solid var(--near-black);
+  transition: transform 0.475s var(--ease-out-soft), background-color 0.3s, color 0.3s;
+}
+
+.btn-secondary:hover {
+  background: var(--near-black);
+  color: var(--white);
+}
+
+/* ── Selection ──────────────────────────────── */
+::selection {
+  background: var(--primary-blue);
+  color: var(--white);
+}
+
+/* ── Scrollbar ──────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-silver);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink);
+}
