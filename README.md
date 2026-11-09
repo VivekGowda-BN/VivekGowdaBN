@@ -11,17 +11,6 @@
      ═══════════════════════════════════════════════════════════════ -->
 
 <p align="center">
-  <a href="public/assets/readme-hero.jpg">
-    <img
-      src="public/assets/readme-hero.jpg"
-      alt="Vivek Gowda BN portfolio hero section"
-      width="100%"
-      style="border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);"
-    />
-  </a>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white&style=flat-square" alt="React 19" />
   <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white&style=flat-square" alt="Vite 8" />
   <img src="https://img.shields.io/badge/GSAP-ScrollTrigger-88CE02?logo=greensock&logoColor=white&style=flat-square" alt="GSAP" />
