@@ -29,6 +29,18 @@ This portfolio is a creative development showcase engineered with a luxury edito
 
 It balances typography (**Funnel Display** & **Montserrat**), physics-based cursor interactions, custom SVG paint masking shaders, and GPU-accelerated motion systems into a seamless single-page experience.
 
+<p align="center">
+  <a href="public/assets/readme-preview.jpg">
+    <img
+      src="public/assets/readme-preview.jpg"
+      alt="Vivek Gowda BN portfolio preview"
+      width="100%"
+    />
+  </a>
+</p>
+
+
+
 ---
 
 ## 🎯 Key Sections & Motion Architecture
