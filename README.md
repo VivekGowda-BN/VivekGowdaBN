@@ -32,7 +32,7 @@ It balances typography (**Funnel Display** & **Montserrat**), physics-based curs
 <p align="center">
   <a href="public/assets/readme-preview.jpg">
     <img
-      src="public/assets/readme-preview.jpg"
+      src="public/assets/readme-preview.jpg.png"
       alt="Vivek Gowda BN portfolio preview"
       width="100%"
     />
