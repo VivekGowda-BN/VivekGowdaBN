@@ -176,14 +176,6 @@ export default function TiltedCard({
                   </div>
                 </div>
 
-                {/* Highlight banner if present */}
-                {highlight && (
-                  <div className="tilted-card__highlight">
-                    <span className="tilted-card__highlight-dot" />
-                    <span className="tilted-card__highlight-text">{highlight}</span>
-                  </div>
-                )}
-
                 {/* Flip Prompt Footer */}
                 <div className="tilted-card__footer">
                   <div className="tilted-card__flip-btn">
@@ -299,9 +291,9 @@ export default function TiltedCard({
                 </ul>
               )}
 
-              {/* Highlight callout on back */}
+              {/* Highlight callout on back face */}
               {highlight && (
-                <div className="tilted-card__highlight tilted-card__highlight--back">
+                <div className="tilted-card__highlight--back">
                   <span className="tilted-card__highlight-dot" />
                   <span className="tilted-card__highlight-text">{highlight}</span>
                 </div>

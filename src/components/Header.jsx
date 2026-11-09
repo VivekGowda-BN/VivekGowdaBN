@@ -55,14 +55,16 @@ export default function Header() {
 
           const rect = el.getBoundingClientRect();
           const winW = window.innerWidth;
+          const winH = window.innerHeight;
           const isMobile = winW < 768;
 
           // Desired width of the headline over the portrait in the hero
-          const desiredHeroWidth = Math.min(winW * (isMobile ? 0.92 : 0.88), 1080);
+          // Slightly reduced for refined balance while preserving strong impact
+          const desiredHeroWidth = Math.min(winW * (isMobile ? 0.88 : 0.84), 1220);
           const startScale = Math.max(desiredHeroWidth / rect.width, 1.0);
 
-          // Desired coordinates in the hero (positioned just below the navbar area)
-          const heroTop = isMobile ? 62 : 72;
+          // Desired coordinates in the hero (positioned cleanly in upper hero)
+          const heroTop = isMobile ? Math.max(winH * 0.08, 65) : Math.max(winH * 0.1, 75);
           const heroCenterX = winW / 2;
 
           // Coordinate offsets from fixed docked top-left (rect.left, rect.top)

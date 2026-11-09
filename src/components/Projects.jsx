@@ -57,6 +57,23 @@ const PROJECTS = [
     image: '/assets/shaadimath.png',
     link: 'https://github.com/VivekGowda-BN/Shaadi.Math',
   },
+  {
+    id: 'portfolio',
+    index: '04',
+    title: 'Portfolio Website',
+    subtitle: 'Interactive Creative Engineering Portfolio',
+    description:
+      'High-performance personal portfolio featuring custom GSAP scrubbed scroll systems, 3D interactive physics cards, and reactive motion design.',
+    stack: [
+      { name: 'React', icon: 'react' },
+      { name: 'GSAP', icon: 'gsap' },
+      { name: 'Framer Motion', icon: 'motion' },
+      { name: 'Tailwind CSS', icon: 'tailwind' },
+      { name: 'Vite', icon: 'vite' },
+    ],
+    image: '/assets/portfolio.png',
+    link: 'https://github.com/VivekGowda-BN/VivekGowdaBN',
+  },
 ];
 
 function renderTechIcon(icon) {
@@ -136,6 +153,19 @@ function renderTechIcon(icon) {
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <polyline points="4 14 10 8 16 14 20 10" />
           <polyline points="4 20 10 14 16 20 20 16" />
+        </svg>
+      );
+    case 'gsap':
+      return (
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 3" />
+        </svg>
+      );
+    case 'vite':
+      return (
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
+          <path d="M21.5 3.5l-9.8 17.8a.7.7 0 0 1-1.2 0L2.5 7.5a.7.7 0 0 1 .8-1l7.8 2.3 2.6-5a.7.7 0 0 1 1.2 0l2 3.8 3.8-3.1a.7.7 0 0 1 .8-1z" />
         </svg>
       );
     default:

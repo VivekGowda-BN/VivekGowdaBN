@@ -16,10 +16,49 @@
   z-index: 10;
 }
 
-/* Background-less Portrait Sitting Directly on Page Canvas (Moved upward & enlarged) */
+/* ── Floating Mouse-Trail Images in Hero Background ── */
+.hero__trail-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  /* No top mask — JS handles button exclusion precisely */
+}
+
+.hero__trail-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* Moderate floating images — between About (44-60px) and previous Hero (65-92px) */
+  width: clamp(54px, 5.5vw, 76px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero__trail-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  -webkit-mask-image: linear-gradient(105deg, #000 45%, rgba(0, 0, 0, 0) 62%);
+  mask-image: linear-gradient(105deg, #000 45%, rgba(0, 0, 0, 0) 62%);
+  -webkit-mask-size: 280% 100%;
+  mask-size: 280% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 100% 0%;
+  mask-position: 100% 0%;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  /* Tint to the website brand blue (#2A4093) */
+  filter: sepia(1) saturate(5) hue-rotate(190deg) brightness(0.6);
+}
+
+/* Background-less Portrait Sitting Lower Below the Name (Alejandro HA composition) */
 .hero__subject-container {
   position: absolute;
-  bottom: clamp(16px, 2.8vh, 36px);
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -27,17 +66,16 @@
   align-items: flex-end;
   justify-content: center;
   width: 100%;
-  max-width: 1060px;
-  height: 82vh;
-  max-height: 800px;
+  max-width: 1040px;
+  height: clamp(460px, 66vh, 670px);
   pointer-events: none;
 }
 
 .hero__subject-img {
   width: auto;
   height: 100%;
-  max-height: 80vh;
-  max-width: min(94vw, 880px);
+  max-height: 100%;
+  max-width: min(92vw, 780px);
   object-fit: contain;
   object-position: bottom center;
   display: block;
@@ -46,7 +84,20 @@
   will-change: transform, opacity;
 }
 
-/* Bottom Labels Bar - Edge-to-edge alignment (closer to left and right screen edges) */
+/* Small CircularText nestled in the open space between the stool legs */
+.hero__stool-badge {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(6px, 1.2vh, 14px);
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bottom Labels Bar - Edge-to-edge alignment */
 .hero__bottom-bar {
   position: absolute;
   bottom: clamp(18px, 3vh, 30px);
@@ -163,32 +214,41 @@
   }
 
   .hero__subject-container {
-    height: 66vh;
+    height: clamp(410px, 62vh, 580px);
   }
 }
 
 @media (max-width: 640px) {
   .hero__subject-container {
-    height: 55vh;
+    height: clamp(340px, 58vh, 490px);
+    bottom: 0;
+  }
+
+  .hero__stool-badge {
+    bottom: clamp(4px, 1vh, 8px);
+  }
+
+  .hero__stool-badge .circular-text-wrap {
+    width: 50px !important;
+    height: 50px !important;
+    --radius: 19px !important;
+    --font-size: 5px !important;
   }
 
   .hero__bottom-bar {
-    flex-direction: column;
-    gap: 8px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     bottom: 12px;
-  }
-
-  .hero__location-tag {
-    order: 2;
+    padding: 0 14px;
   }
 
   .hero__pill-tag {
-    order: 1;
     padding: 5px 12px;
   }
 
-  .hero__pill-text {
+  .hero__pill-text,
+  .hero__location-text {
     font-size: 0.625rem;
   }
 }
